@@ -9,14 +9,14 @@ function Payment() {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    fetch("/config").then(async (r) => {
+    fetch("https://stripe-backend-7476.onrender.com/config").then(async (r) => {
       const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     });
   }, []);
 
   useEffect(() => {
-    fetch("/create-payment-intent", {
+    fetch("https://stripe-backend-7476.onrender.com/create-payment-intent", {
       method: "POST",
       body: JSON.stringify({}),
     }).then(async (result) => {
