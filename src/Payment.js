@@ -16,11 +16,10 @@ function Payment() {
     // setStripePromise(loadStripe(publishableKey));
     // console.log(process.env.STRIPE_PUBLISHABLE_KEY);
     // console.log(process.env.STRIPE_PUBLISHABLE_KEY);
-    setStripePromise(
-      loadStripe(
-        "pk_test_51PEIQsG2ZLAQPYCBdwxuIeaVa06FikiVqecYt1rCOS5ln00ROoL1BL4gyYfu2HngNxbq1kB8FZrGmzefQMfau1w700p6fMAMzr"
-      )
-    );
+    const publishableKey =
+      "pk_test_51PEIQsG2ZLAQPYCBdwxuIeaVa06FikiVqecYt1rCOS5ln00ROoL1BL4gyYfu2HngNxbq1kB8FZrGmzefQMfau1w700p6fMAMzr";
+    setStripePromise(loadStripe(publishableKey));
+    console.log(publishableKey);
   }, []);
 
   useEffect(() => {
