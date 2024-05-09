@@ -3,23 +3,16 @@ import { useEffect, useState } from "react";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
-// const env = require("dotenv").config({ path: "./.env" });
 
 function Payment() {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    // fetch("/config").then(async (r) => {
-    //   const { publishableKey } = await r.json();
-    // });
-    // setStripePromise(loadStripe(publishableKey));
-    // console.log(process.env.STRIPE_PUBLISHABLE_KEY);
-    // console.log(process.env.STRIPE_PUBLISHABLE_KEY);
-    const publishableKey =
-      "pk_test_51PEIQsG2ZLAQPYCBdwxuIeaVa06FikiVqecYt1rCOS5ln00ROoL1BL4gyYfu2HngNxbq1kB8FZrGmzefQMfau1w700p6fMAMzr";
-    setStripePromise(loadStripe(publishableKey));
-    console.log(publishableKey);
+    fetch("/config").then(async (r) => {
+      const { publishableKey } = await r.json();
+      setStripePromise(loadStripe(publishableKey));
+    });
   }, []);
 
   useEffect(() => {
